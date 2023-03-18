@@ -1,0 +1,55 @@
+{% extends 'glowny.html' %}
+{% block tytul %}Lista filmów{% endblock %}
+{% block strona %}
+
+<div class="jumbotron">
+    {% if user.is_authenticated %}
+    <h1 class="display-4">Witaj {{user.username}}</h1>
+<a href = "{% url 'logout' %}" class="btn btn-outline-primary">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+{% else %}
+<a href = "{% url 'login' %}" class="btn btn-outline-primary">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+{% endif %}
+</div>
+
+<hr>
+
+    {% if filmy|length == 0 %}
+    <h2>Brak filmów</h2>
+    {% else %}
+<!--<h2>Ilosc filmów w bazie:{{ filmy|length }}</h2>-->
+{% if user.is_authenticated %}
+<a href = "{% url 'nowy_film' %}" class="btn btn-primary btn-lg">Dodaj Film <i class="fa-solid fa-square-plus"></i></a>
+{% endif %}
+        {% for film in filmy %}
+
+
+            <div class="card" >
+
+              <div class="card-body">
+                  <img src="/media/{{film.okladka}}" class="okladka_filmu">
+                  <div class="row">
+                    <div class="col-8">
+
+                        <h2 class="card-title">{{film}}</h2>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-body">
+
+                            <a href="{% url 'edytuj_film' film.id %}" class="card-link"><i class="fas fa-2x fa-pen-to-square film_icon"></i></a>
+                            <a href="{% url 'usun_film' film.id %}" class="card-link"><i class="fas fa-2x fa-trash-can film_icon"></i></a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <p class="card-text opis">{{film.opis}}</p>
+                  </div>
+              </div>
+                {% if user.is_authenticated %}
+
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

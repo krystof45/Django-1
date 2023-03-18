@@ -1,0 +1,14 @@
+body{
+padding: 2rm;
+}
+.okladka_filmu{
+width: 150px;
+float: left;
+}
+.film_icon{
+font-size: 1.6rem;
+}
+.card{
+width: 35rem;
+}
+
