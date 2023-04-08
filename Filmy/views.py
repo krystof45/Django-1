@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
+
 from django.http import HttpResponse
 from .models import Film,DodatkowInf,Ocena
 from .forms import FilmForm,DodatkowInfForm,OcenaForm,RezyserForm
@@ -7,7 +8,7 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UserSerializer,FilmSerializer
 
-
+'''
 class UserView(viewsets.ModelViewSet):
     queryset= User.objects.all()
     serializer_class = UserSerializer
@@ -15,6 +16,7 @@ class UserView(viewsets.ModelViewSet):
 class FilmView(viewsets.ModelViewSet):
     queryset= Film.objects.all()
     serializer_class = FilmSerializer
+'''
 # Create your views here.
 
 def Wszystkie_filmy(request):
